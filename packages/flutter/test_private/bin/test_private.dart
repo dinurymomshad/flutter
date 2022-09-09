@@ -6,7 +6,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:path/path.dart' as path;
-import 'package:process_runner/process_runner.dart';
+// import 'package:process_runner/process_runner.dart';
 
 // This program enables testing of private interfaces in the flutter package.
 //
@@ -202,36 +202,36 @@ class TestCase {
 
   Future<bool> runAnalyzer() async {
     final String flutter = path.join(flutterRoot.path, 'bin', 'flutter');
-    final ProcessRunner runner = ProcessRunner(
-      defaultWorkingDirectory: tmpdir.absolute,
-      printOutputDefault: true,
-    );
-    final ProcessRunnerResult result = await runner.runProcess(
-      <String>[flutter, 'analyze', '--current-package', '--pub', '--congratulate', '.'],
-      failOk: true,
-    );
-    if (result.exitCode != 0) {
-      return false;
-    }
+    // final ProcessRunner runner = ProcessRunner(
+    //   defaultWorkingDirectory: tmpdir.absolute,
+    //   printOutputDefault: true,
+    // );
+    // final ProcessRunnerResult result = await runner.runProcess(
+    //   <String>[flutter, 'analyze', '--current-package', '--pub', '--congratulate', '.'],
+    //   failOk: true,
+    // );
+    // if (result.exitCode != 0) {
+    //   return false;
+    // }
     return true;
   }
 
   Future<bool> runTests() async {
-    final ProcessRunner runner = ProcessRunner(
-      defaultWorkingDirectory: tmpdir.absolute,
-      printOutputDefault: true,
-    );
-    final String flutter = path.join(flutterRoot.path, 'bin', 'flutter');
-    for (final File test in tests) {
-      final String testPath = path.join(path.dirname(test.path), 'lib', path.basenameWithoutExtension(test.path));
-      final ProcessRunnerResult result = await runner.runProcess(
-        <String>[flutter, 'test', '--enable-experiment=non-nullable', '--no-sound-null-safety', '--null-assertions', testPath],
-        failOk: true,
-      );
-      if (result.exitCode != 0) {
-        return false;
-      }
-    }
+    // final ProcessRunner runner = ProcessRunner(
+    //   defaultWorkingDirectory: tmpdir.absolute,
+    //   printOutputDefault: true,
+    // );
+    // final String flutter = path.join(flutterRoot.path, 'bin', 'flutter');
+    // for (final File test in tests) {
+    //   final String testPath = path.join(path.dirname(test.path), 'lib', path.basenameWithoutExtension(test.path));
+    //   final ProcessRunnerResult result = await runner.runProcess(
+    //     <String>[flutter, 'test', '--enable-experiment=non-nullable', '--no-sound-null-safety', '--null-assertions', testPath],
+    //     failOk: true,
+    //   );
+    //   if (result.exitCode != 0) {
+    //     return false;
+    //   }
+    // }
     return true;
   }
 
